@@ -124,6 +124,8 @@ Database credentials are already configured in code:
 
 ## 🔎 Generate Embeddings & Setup Database
 
+- From Backend Folder Download all the files and place it in root folder
+
 📝 1. Convert Excel → JSON (Products Data)
 
 If you update your products.xlsx file, run:
