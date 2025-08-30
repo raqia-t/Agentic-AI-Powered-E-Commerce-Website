@@ -115,10 +115,10 @@ Run the following script:
 
 
 ✅ This will:
--Generate FAISS embeddings from products.json + faqs_and_policies.csv
--Save index in embeddings/
--Create products and cart_items tables in PostgreSQL
--Insert product data into the database
+- Generate FAISS embeddings from products.json + faqs_and_policies.csv
+- Save index in embeddings/
+- Create products and cart_items tables in PostgreSQL
+- Insert product data into the database
 
 ---
 
@@ -131,8 +131,8 @@ Start the API server and run the script:
 
 ## 🌐 Run the Frontend (Next.js)
 
--Open another cmd and activate the env
--Go to frontend folder: 
+- Open another cmd and activate the env
+- Go to frontend folder: 
 <pre> <code>```  cd frontend
 npm install
 npm run dev ```</code> </pre>
@@ -157,18 +157,18 @@ Test model:
 
 ## 🧩 Usage Flow
 
--Product Search → Type queries like "show me running shoes"
--Cart Management → Add/remove/view items with buttons on the frontend
--Order Tracking → Check status with "track order ORD101" (Check the Order numbers from the sample_orders.json file)
--Customer Support → Ask policy/FAQ questions
+- Product Search → Type queries like "show me running shoes"
+- Cart Management → Add/remove/view items with buttons on the frontend
+- Order Tracking → Check status with "track order ORD101" (Check the Order numbers from the sample_orders.json file)
+- Customer Support → Ask policy/FAQ questions
 
 ---
 
 ## 📝 Notes
 
--If PostgreSQL database isn’t created → script will fail to connect.
--Modify DB_CONFIG in embeddings_and_db.py and cart_agent.py if using custom DB/user.
--Ollama must be running in background for LLM responses.
+- If PostgreSQL database isn’t created → script will fail to connect.
+- Modify DB_CONFIG in embeddings_and_db.py and cart_agent.py if using custom DB/user.
+- Ollama must be running in background for LLM responses.
 
 
 
