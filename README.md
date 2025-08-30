@@ -69,39 +69,46 @@ Install PostgreSQL
 
 Download From: https://www.postgresql.org/download/windows/?utm_source
 
-Create Database & User
+2. Open PostgreSQL Shell
+   
+<pre> <code>```  psql -U postgres  ```</code> </pre>
+(Default superuser is postgres)
 
-Run inside psql:
+3. Run Setup Commands
 
+Inside the PostgreSQL shell, execute:
 
-<pre> <code>``` -- 1. Create database
+<pre> <code>``` -- Create database
 CREATE DATABASE happycart;
 
--- 2. Create user with password
+-- Create user with password
 CREATE USER happyuser WITH PASSWORD 'happypass';
 
--- 3. Grant database-level privileges (connect, create schema, temporary tables)
+-- Grant privileges
 GRANT ALL PRIVILEGES ON DATABASE happycart TO happyuser;
 
--- Switch to happycart database
+-- Switch to happycart DB
 \c happycart
 
--- 4. Grant privileges on schema
+-- Schema & table privileges
 GRANT ALL ON SCHEMA public TO happyuser;
-
--- 5. Grant privileges on all current tables
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO happyuser;
-
--- 6. Grant privileges on all sequences (needed for SERIAL/IDENTITY columns)
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO happyuser;
 
--- 7. Make sure future tables & sequences are also accessible automatically
+-- Default privileges for future tables
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
 GRANT ALL PRIVILEGES ON TABLES TO happyuser;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
-GRANT ALL PRIVILEGES ON SEQUENCES TO happyuser; ```</code> </pre>
+GRANT ALL PRIVILEGES ON SEQUENCES TO happyuser;  ```</code> </pre>
 
+4. Verify Connection
+
+Exit psql and test the connection:
+
+<pre> <code>``` psql -U happyuser -d happycart ```</code> </pre>
+
+If successful → ✅ database is ready for your backend.
 
 Database credentials are already configured in code:
 
