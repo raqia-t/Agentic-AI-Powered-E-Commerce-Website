@@ -73,17 +73,34 @@ Create Database & User
 
 Run inside psql:
 
-<pre> <code>``` -- Login as postgres superuser
-psql -U postgres
 
--- Create database
+<pre> <code>``` -- 1. Create database
 CREATE DATABASE happycart;
 
--- Create user
+-- 2. Create user with password
 CREATE USER happyuser WITH PASSWORD 'happypass';
 
--- Grant privileges
-GRANT ALL PRIVILEGES ON DATABASE happycart TO happyuser; ```</code> </pre>
+-- 3. Grant database-level privileges (connect, create schema, temporary tables)
+GRANT ALL PRIVILEGES ON DATABASE happycart TO happyuser;
+
+-- Switch to happycart database
+\c happycart
+
+-- 4. Grant privileges on schema
+GRANT ALL ON SCHEMA public TO happyuser;
+
+-- 5. Grant privileges on all current tables
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO happyuser;
+
+-- 6. Grant privileges on all sequences (needed for SERIAL/IDENTITY columns)
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO happyuser;
+
+-- 7. Make sure future tables & sequences are also accessible automatically
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL PRIVILEGES ON TABLES TO happyuser;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL PRIVILEGES ON SEQUENCES TO happyuser; ```</code> </pre>
 
 
 Database credentials are already configured in code:
