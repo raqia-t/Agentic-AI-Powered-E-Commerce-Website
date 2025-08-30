@@ -1,0 +1,10 @@
+pandas 
+numpy
+openpyxl
+faiss-cpu 
+psycopg2-binary
+sentence-transformers
+langgraph
+fastapi
+uvicorn
+pydantic
